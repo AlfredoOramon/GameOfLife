@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
  * Date: 15/05/17 9:10
  */
 @RunWith(JUnitParamsRunner.class)
-public class KataTest {
+public class GameOfLifeTest {
 
     public static final String VALUE_ALIVE_ONE = "1";
     public static final String VALUE_DEATH_ZERO = "0";
@@ -58,7 +58,6 @@ public class KataTest {
 
         SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
         String result=SUT.printWorld();
-        System.out.print(result);
 
         assertEquals("It should be this world",expected,result);
     }
@@ -73,7 +72,6 @@ public class KataTest {
 
         SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_STAR, VALUE_DEATH_HYPHEN));
         String result=SUT.printWorld();
-        System.out.print(result);
 
         assertEquals("It should be this world",expected,result);
     }

@@ -12,11 +12,11 @@ import com.oramon.kata.draw.impl.DrawStrategyImpl;
  */
 public class GameOfLife {
     private int[][] world;
-    DrawStrategy drawStrategy;
+    DrawWorldStrategy drawWorldStrategy;
 
     public GameOfLife(int[][] world,DrawStrategy strategy) {
         this.world=world;
-        this.drawStrategy=strategy;
+        this.drawWorldStrategy=new DrawWorldStrategy(strategy);
     }
 
     public int[][] getWorld() {
@@ -24,13 +24,6 @@ public class GameOfLife {
     }
 
     public String printWorld() {
-        StringBuilder builder = new StringBuilder();
-        for (int[] row : world) {
-            for (int value : row) {
-                builder.append(drawStrategy.getSymbolToDraw(value));
-            }
-            builder.append(System.getProperty("line.separator"));
-        }
-        return builder.toString();
+        return drawWorldStrategy.printworld(world);
     }
 }
