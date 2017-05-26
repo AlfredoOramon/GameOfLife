@@ -1,6 +1,5 @@
-import com.fizzbuzz.impl.FizzBuzzImpl;
+
 import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
