@@ -1,4 +1,6 @@
 
+import com.oramon.kata.GameOfLife;
+import com.oramon.kata.draw.impl.DrawStrategyImpl;
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,18 +18,63 @@ import static org.junit.Assert.assertEquals;
 @RunWith(JUnitParamsRunner.class)
 public class KataTest {
 
-    //private KataInitializer SUT;
+    public static final String VALUE_ALIVE_ONE = "1";
+    public static final String VALUE_DEATH_ZERO = "0";
+    private static final String VALUE_DEATH_HYPHEN = "-";
+    private static final String VALUE_ALIVE_STAR = "*";
+    private GameOfLife SUT;
+    private int[][] world;
 
     @Before
     public void setUp() {
-        //SUT = new KataInitializer();
+        world=createInitialWorld();
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+    }
+
+    private int[][] createInitialWorld() {
+        int[][] result = new int[4][8];
+        result[0][0]=1;
+        return result;
     }
 
     @Test
-    public void firstTest() {
+    public void CheckThatTheWorldExist() {
 
-        boolean expected=true;
+        int[][] expected= createInitialWorld();
 
-        assertEquals("It should be true",expected, true);
+        int[][] result=SUT.getWorld();
+
+        assertEquals("It should be true",expected,result);
+    }
+
+    @Test
+    public void PrintWorldWithOnesAndZeros()
+    {
+        String expected=
+                        "10000000\n" +
+                        "00000000\n" +
+                        "00000000\n" +
+                        "00000000\n";
+
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        String result=SUT.printWorld();
+        System.out.print(result);
+
+        assertEquals("It should be this world",expected,result);
+    }
+    @Test
+    public void PrintWorldWithHyphensAndZeros()
+    {
+        String expected=
+                        "*-------\n" +
+                        "--------\n" +
+                        "--------\n" +
+                        "--------\n";
+
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_STAR, VALUE_DEATH_HYPHEN));
+        String result=SUT.printWorld();
+        System.out.print(result);
+
+        assertEquals("It should be this world",expected,result);
     }
 }
