@@ -1,3 +1,4 @@
+package test.com.oramon.kata;
 
 import com.oramon.kata.GameOfLife;
 import com.oramon.kata.draw.impl.DrawStrategyImpl;

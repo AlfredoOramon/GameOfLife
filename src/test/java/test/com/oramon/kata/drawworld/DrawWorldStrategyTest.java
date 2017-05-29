@@ -1,4 +1,4 @@
-package test.com.oramon.kata.draw;
+package test.com.oramon.kata.drawworld;
 
 import com.oramon.kata.DrawWorldStrategy;
 import com.oramon.kata.draw.DrawStrategy;

@@ -1,4 +1,4 @@
-package test.com.oramon.kata;
+package test.com.oramon.kata.drawcell;
 
 import com.oramon.kata.draw.DrawStrategy;
 import com.oramon.kata.draw.impl.DrawStrategyImpl;
