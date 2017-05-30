@@ -1,6 +1,8 @@
 package com.oramon.kata.draw.impl;
 
+import com.oramon.kata.constants.GameOfLifeConstants;
 import com.oramon.kata.draw.DrawStrategy;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * ClassName
@@ -22,10 +24,12 @@ public class DrawStrategyImpl implements DrawStrategy {
 
     public String getSymbolToDraw(int value) {
         String result;
-        if (value == 1) {
+        if (value == GameOfLifeConstants.CELL_ALIVE) {
             result = valueAlive;
-        } else {
+        } else if (value == GameOfLifeConstants.CELL_DEATH) {
             result = valueDeath;
+        } else {
+            throw new NotImplementedException();
         }
         return result;
     }
