@@ -76,4 +76,19 @@ public class GameOfLifeTest {
 
         assertEquals("It should be this world",expected,result);
     }
+
+    @Test
+    public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldDie()
+    {
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        String result=SUT.nextGenerationWorld();
+
+        String expected=
+                "00000000\n" +
+                        "00000000\n" +
+                        "00000000\n" +
+                        "00000000\n";
+
+        assertEquals("The next generation world should be",expected,result);
+    }
 }

@@ -26,4 +26,9 @@ public class GameOfLife {
     public String printWorld() {
         return drawWorldStrategy.printworld(world);
     }
+
+    public String nextGenerationWorld()
+    {
+        return null;
+    }
 }
