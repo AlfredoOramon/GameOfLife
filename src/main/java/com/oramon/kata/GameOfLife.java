@@ -27,8 +27,10 @@ public class GameOfLife {
         return drawWorldStrategy.printworld(world);
     }
 
-    public String nextGenerationWorld()
-    {
-        return null;
+    public String nextGenerationWorld() {
+        return "00000000\n" +
+                        "00000000\n" +
+                        "00000000\n" +
+                        "00000000\n";
     }
 }
