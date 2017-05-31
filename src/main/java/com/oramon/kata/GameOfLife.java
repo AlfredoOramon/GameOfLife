@@ -2,6 +2,7 @@ package com.oramon.kata;
 
 import com.oramon.kata.draw.DrawStrategy;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStategy;
+import com.oramon.kata.utils.GameOfLifeUtils;
 
 /**
  * ClassName
@@ -21,7 +22,7 @@ public class GameOfLife {
     }
 
     public int[][] getWorld() {
-        return world;
+        return GameOfLifeUtils.clone(world);
     }
 
     public String printWorld() {
