@@ -36,4 +36,25 @@ public class LiveEvolutionMatrixWorldStrategyTest {
         assertEquals("The next generation world should be", expected, result);
     }
 
+    @Test
+    public void nextGeneration_ACellWithFewerMoreThanTwoLiveNeighbours_ShouldLive() {
+        int[][] world = new int[][]
+                {
+                        new int[]{1, 1, 0, 0},
+                        new int[]{1, 0, 1, 0},
+                        new int[]{0, 0, 0, 0},
+                        new int[]{1, 0, 1, 1},
+                };
+
+        int[] [] result= new LiveEvolutionMatrixWorldStategyImpl().createNextGenerationWorld(world);
+        int[][] expected = new int[][]
+                {
+                        new int[]{1, 0, 0, 0},
+                        new int[]{0, 0, 0, 0},
+                        new int[]{0, 0, 0, 0},
+                        new int[]{0, 0, 0, 0},
+                };
+        assertEquals("The next generation world should be", expected, result);
+    }
+
 }
