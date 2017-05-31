@@ -80,14 +80,44 @@ public class GameOfLifeTest {
     @Test
     public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldDie()
     {
+        int[][] world = new int[][]
+                {
+                        new int[]{1,0,0,0},
+                        new int[]{1,0,1,0},
+                        new int[]{0,0,0,0},
+                        new int[]{1,0,1,1},
+                };
+
         SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
         String result=SUT.nextGenerationWorld();
 
         String expected=
-                "00000000\n" +
-                        "00000000\n" +
-                        "00000000\n" +
-                        "00000000\n";
+                        "0000\n" +
+                        "0000\n" +
+                        "0000\n" +
+                        "0000\n";
+
+        assertEquals("The next generation world should be",expected,result);
+    }
+
+    @Test
+    public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldLive()
+    {
+        int[][] world = new int[][]
+                {
+                        new int[]{0,0,10,1},
+                        new int[]{1,2,1,1},
+                        new int[]{1,1,2,1},
+                        new int[]{0,1,0,1},
+                };
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        String result=SUT.nextGenerationWorld();
+
+        String expected=
+                        "0000\n" +
+                        "0000\n" +
+                        "0000\n" +
+                        "0000\n";
 
         assertEquals("The next generation world should be",expected,result);
     }

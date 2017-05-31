@@ -7,5 +7,7 @@ package com.oramon.kata.livegeneration.interfaces;
  * <p>
  * Date: 29/05/17 9:33
  */
-public class LiveEvolutionStrategy {
+public interface LiveEvolutionMatrixWorldStategy
+{
+    int[][] createNextGenerationWorld(int[][] world);
 }
