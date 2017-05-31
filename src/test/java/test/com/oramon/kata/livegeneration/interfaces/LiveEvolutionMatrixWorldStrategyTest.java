@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * <p>
  * Date: 30/05/17 11:31
  */
-public class LiveEvolutionMatrixWorldStategyTest {
+public class LiveEvolutionMatrixWorldStrategyTest {
 
     @Test
     public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldDie() {

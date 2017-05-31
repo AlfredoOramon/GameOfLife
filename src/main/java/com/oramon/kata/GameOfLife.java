@@ -1,7 +1,7 @@
 package com.oramon.kata;
 
 import com.oramon.kata.draw.DrawStrategy;
-import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStategy;
+import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
 import com.oramon.kata.utils.GameOfLifeUtils;
 
 /**
@@ -14,11 +14,12 @@ import com.oramon.kata.utils.GameOfLifeUtils;
 public class GameOfLife {
     private int[][] world;
     DrawWorldStrategy drawWorldStrategy;
-    LiveEvolutionMatrixWorldStategy worldCycleOfLifeStrategy;
+    LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
 
-    public GameOfLife(int[][] world,DrawStrategy strategy) {
+    public GameOfLife(int[][] world,DrawStrategy strategy,LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
         this.world=world;
         this.drawWorldStrategy=new DrawWorldStrategy(strategy);
+        this.worldCycleOfLifeStrategy=worldCycleOfLifeStrategy;
     }
 
     public int[][] getWorld() {

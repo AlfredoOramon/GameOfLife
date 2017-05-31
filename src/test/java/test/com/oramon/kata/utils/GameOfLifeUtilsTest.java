@@ -33,8 +33,8 @@ public class GameOfLifeUtilsTest {
         int[][] expected = new int[][]
                 {
                         new int[]{0,1,1,1},
-                        new int[]{1,1,1,1},
-                        new int[]{1,1,1,1},
+                        new int[]{1,2,1,1},
+                        new int[]{1,1,2,1},
                         new int[]{0,1,0,1},
                 };
 

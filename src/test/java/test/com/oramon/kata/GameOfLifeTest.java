@@ -2,6 +2,8 @@ package test.com.oramon.kata;
 
 import com.oramon.kata.GameOfLife;
 import com.oramon.kata.draw.impl.DrawStrategyImpl;
+import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStategyImpl;
+import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,13 +25,16 @@ public class GameOfLifeTest {
     public static final String VALUE_DEATH_ZERO = "0";
     private static final String VALUE_DEATH_HYPHEN = "-";
     private static final String VALUE_ALIVE_STAR = "*";
+
     private GameOfLife SUT;
+    private LiveEvolutionMatrixWorldStrategy liveEvolutionMatrixWorldStrategy;
     private int[][] world;
 
     @Before
     public void setUp() {
         world=createInitialWorld();
-        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        liveEvolutionMatrixWorldStrategy=new LiveEvolutionMatrixWorldStategyImpl();
+        SUT = new GameOfLife(world, new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO),liveEvolutionMatrixWorldStrategy);
     }
 
     private int[][] createInitialWorld() {
@@ -57,7 +62,7 @@ public class GameOfLifeTest {
                         "00000000\n" +
                         "00000000\n";
 
-        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO),liveEvolutionMatrixWorldStrategy);
         String result=SUT.printWorld();
 
         assertEquals("It should be this world",expected,result);
@@ -71,7 +76,8 @@ public class GameOfLifeTest {
                         "--------\n" +
                         "--------\n";
 
-        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_STAR, VALUE_DEATH_HYPHEN));
+        final DrawStrategyImpl drawStrategy = new DrawStrategyImpl(VALUE_ALIVE_STAR, VALUE_DEATH_HYPHEN);
+        SUT = new GameOfLife(world, drawStrategy,liveEvolutionMatrixWorldStrategy);
         String result=SUT.printWorld();
 
         assertEquals("It should be this world",expected,result);
@@ -88,7 +94,7 @@ public class GameOfLifeTest {
                         new int[]{1,0,1,1},
                 };
 
-        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO),liveEvolutionMatrixWorldStrategy);
         String result=SUT.nextGenerationWorld();
 
         String expected=
@@ -110,7 +116,7 @@ public class GameOfLifeTest {
                         new int[]{1,1,2,1},
                         new int[]{0,1,0,1},
                 };
-        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO));
+        SUT = new GameOfLife(world,new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO),liveEvolutionMatrixWorldStrategy);
         String result=SUT.nextGenerationWorld();
 
         String expected=
