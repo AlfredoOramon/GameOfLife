@@ -1,6 +1,6 @@
 package test.com.oramon.kata.drawworld;
 
-import com.oramon.kata.DrawWorldStrategy;
+import com.oramon.kata.draw.impl.DrawWorldStrategyImpl;
 import com.oramon.kata.draw.DrawStrategy;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,13 +20,13 @@ import static org.mockito.Mockito.when;
  */
 public class DrawWorldStrategyTest {
 
-    private DrawWorldStrategy SUT;
+    private DrawWorldStrategyImpl SUT;
     private DrawStrategy drawStrategy;
 
     @Before
     public void setUp() {
         drawStrategy=mock(DrawStrategy.class);
-        SUT = new DrawWorldStrategy(drawStrategy);
+        SUT = new DrawWorldStrategyImpl(drawStrategy);
     }
 
     private int[][] createInitialWorld() {
@@ -63,7 +63,7 @@ public class DrawWorldStrategyTest {
         when(drawStrategy.getSymbolToDraw(8)).thenReturn("8");
         when(drawStrategy.getSymbolToDraw(9)).thenReturn("9");
 
-        String result =SUT.printworld(createInitialWorld());
+        String result =SUT.printWorld(createInitialWorld());
 
 
         verify(drawStrategy,times(1)).getSymbolToDraw(1);

@@ -1,6 +1,8 @@
 package com.oramon.kata.world.impl;
 
-import com.oramon.kata.Cell;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.cell.util.CellUtils;
+import com.oramon.kata.world.data.MatrixCoordinate;
 import com.oramon.kata.world.interfaces.World;
 
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class MatrixWorld implements World
             for (int loopWidth = widthToStart; loopWidth <= widthToFinish; loopWidth++) {
 
                 if (isNotTheCellItSelf(cellCoordinate, loopWidth, loopHeight)) {
-                    neighbourCells.add(getWorld()[loopHeight][loopWidth]);
+                    neighbourCells.add(world[loopHeight][loopWidth]);
                 }
             }
         }
@@ -93,33 +95,31 @@ public class MatrixWorld implements World
         return !(width == cellCoordinate.getWidth() && height == cellCoordinate.getHeight());
     }
 
-    public Cell[][] getWorld() {
+    public MatrixWorld getMatrixWorld() {
 
-        return world
-                ;
-    }
-
-    public void setWorld(Cell[][] world) {
-        this.world = world;
+        Cell[][] newArrayCell= CellUtils.clone(world);
+        return new MatrixWorld(newArrayCell);
     }
 
     public int getWidthWorld() {
         return widthWorld;
     }
 
-    public void setWidthWorld(int widthWorld) {
-        this.widthWorld = widthWorld;
-    }
-
     public int getHeightWorld() {
         return heightWorld;
     }
 
-    public void setHeightWorld(int heightWorld) {
-        this.heightWorld = heightWorld;
-    }
-
     public Cell getCell(MatrixCoordinate matrixCoordinate) {
         return world[matrixCoordinate.getHeight()][matrixCoordinate.getWidth()];
+    }
+
+    private void setWorld(Cell[][] world) {
+        this.world = world;
+    }
+    private void setHeightWorld(int heightWorld) {
+        this.heightWorld = heightWorld;
+    }
+    private void setWidthWorld(int widthWorld) {
+        this.widthWorld = widthWorld;
     }
 }

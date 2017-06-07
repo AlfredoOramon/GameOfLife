@@ -1,6 +1,6 @@
 package test.com.oramon.kata.world.impl.matrixworld;
 
-import com.oramon.kata.Cell;
+import com.oramon.kata.cell.data.Cell;
 import com.oramon.kata.world.impl.MatrixWorld;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,8 +1,8 @@
 package test.com.oramon.kata.world.impl.matrixworld;
 
-import com.oramon.kata.Cell;
-import com.oramon.kata.cell.CELL_STATE;
-import com.oramon.kata.world.impl.MatrixCoordinate;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.cell.enums.CELL_STATE;
+import com.oramon.kata.world.data.MatrixCoordinate;
 import com.oramon.kata.world.impl.MatrixWorld;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

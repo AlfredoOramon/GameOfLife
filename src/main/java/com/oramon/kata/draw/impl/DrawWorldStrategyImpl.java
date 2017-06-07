@@ -1,6 +1,7 @@
-package com.oramon.kata;
+package com.oramon.kata.draw.impl;
 
 import com.oramon.kata.draw.DrawStrategy;
+import com.oramon.kata.draw.DrawWorldStrategy;
 
 /**
  * ClassName
@@ -9,15 +10,15 @@ import com.oramon.kata.draw.DrawStrategy;
  * <p>
  * Date: 26/05/17 15:01
  */
-public class DrawWorldStrategy {
+public class DrawWorldStrategyImpl implements DrawWorldStrategy {
 
     DrawStrategy drawStrategy;
 
-    public DrawWorldStrategy(DrawStrategy strategy) {
+    public DrawWorldStrategyImpl(DrawStrategy strategy) {
         this.drawStrategy=strategy;
     }
 
-    public String printworld(int[][] world) {
+    public String printWorld(int[][] world) {
         StringBuilder builder = new StringBuilder();
         for (int[] row : world) {
             for (int value : row) {

@@ -1,8 +1,8 @@
-package com.oramon.kata;
+package com.oramon.kata.game;
 
+import com.oramon.kata.draw.impl.DrawWorldStrategyImpl;
 import com.oramon.kata.draw.DrawStrategy;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
-import com.oramon.kata.utils.GameOfLifeUtils;
 
 /**
  * ClassName
@@ -13,17 +13,13 @@ import com.oramon.kata.utils.GameOfLifeUtils;
  */
 public class GameOfLife {
     private int[][] world;
-    DrawWorldStrategy drawWorldStrategy;
+    DrawWorldStrategyImpl drawWorldStrategy;
     LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
 
     public GameOfLife(int[][] world,DrawStrategy strategy,LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
         this.world=world;
-        this.drawWorldStrategy=new DrawWorldStrategy(strategy);
+        this.drawWorldStrategy=new DrawWorldStrategyImpl(strategy);
         this.worldCycleOfLifeStrategy=worldCycleOfLifeStrategy;
-    }
-
-    public int[][] getWorld() {
-        return GameOfLifeUtils.clone(world);
     }
 
     public String printWorld() {
@@ -36,7 +32,7 @@ public class GameOfLife {
     }
 
     private String printWorld(int [][] world) {
-        return drawWorldStrategy.printworld(world);
+        return drawWorldStrategy.printWorld(world);
     }
 
     private void nextGenerationWorld(int[][] world) {

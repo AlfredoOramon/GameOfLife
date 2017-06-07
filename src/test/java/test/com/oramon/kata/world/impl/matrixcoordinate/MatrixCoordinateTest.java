@@ -1,6 +1,6 @@
 package test.com.oramon.kata.world.impl.matrixcoordinate;
 
-import com.oramon.kata.world.impl.MatrixCoordinate;
+import com.oramon.kata.world.data.MatrixCoordinate;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;

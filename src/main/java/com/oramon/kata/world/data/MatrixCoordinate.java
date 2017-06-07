@@ -1,4 +1,4 @@
-package com.oramon.kata.world.impl;
+package com.oramon.kata.world.data;
 
 /**
  * ClassName

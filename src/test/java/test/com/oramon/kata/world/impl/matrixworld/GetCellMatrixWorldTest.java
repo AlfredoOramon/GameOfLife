@@ -1,8 +1,7 @@
 package test.com.oramon.kata.world.impl.matrixworld;
 
-import com.oramon.kata.Cell;
-import com.oramon.kata.cell.CELL_STATE;
-import com.oramon.kata.world.impl.MatrixCoordinate;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.world.data.MatrixCoordinate;
 import com.oramon.kata.world.impl.MatrixWorld;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,16 +18,6 @@ import static org.junit.Assert.assertThat;
  * Date: 5/06/17 14:33
  */
 public class GetCellMatrixWorldTest extends MatrixWorldBaseTest {
-
-    private Cell firstCell=new Cell(ID_ONE, CELL_STATE.ALIVE);
-    private Cell secondCell=new Cell(ID_TWO,CELL_STATE.DEATH);
-    private Cell thirdCell= new Cell(ID_THREE,CELL_STATE.DEATH);
-    private Cell fourthCell = new Cell(ID_FOUR, CELL_STATE.ALIVE);
-    private Cell fifthCell = new Cell(ID_FIVE, CELL_STATE.ALIVE);
-    private Cell sixthCell = new Cell(ID_SIX, CELL_STATE.ALIVE);
-    private Cell seventh = new Cell(ID_SEVEN, CELL_STATE.ALIVE);
-    private Cell eightCell = new Cell(ID_EIGHT, CELL_STATE.ALIVE);
-    private Cell ninthCell = new Cell(ID_NINE, CELL_STATE.ALIVE);
 
     private MatrixWorld world;
 

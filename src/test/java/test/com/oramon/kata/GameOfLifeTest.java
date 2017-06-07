@@ -1,6 +1,6 @@
 package test.com.oramon.kata;
 
-import com.oramon.kata.GameOfLife;
+import com.oramon.kata.game.GameOfLife;
 import com.oramon.kata.draw.impl.DrawStrategyImpl;
 import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStrategyImpl;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
@@ -41,16 +41,6 @@ public class GameOfLifeTest {
         int[][] result = new int[4][8];
         result[0][0]=1;
         return result;
-    }
-
-    @Test
-    public void CheckThatTheWorldExist() {
-
-        int[][] expected= createInitialWorld();
-
-        int[][] result=SUT.getWorld();
-
-        assertEquals("It should be true",expected,result);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.oramon.kata.cell;
+package com.oramon.kata.cell.enums;
 
 /**
  * ClassName

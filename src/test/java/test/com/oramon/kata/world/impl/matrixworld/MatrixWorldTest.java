@@ -1,17 +1,9 @@
 package test.com.oramon.kata.world.impl.matrixworld;
 
-import com.oramon.kata.Cell;
-import com.oramon.kata.cell.CELL_STATE;
-import com.oramon.kata.world.impl.MatrixCoordinate;
 import com.oramon.kata.world.impl.MatrixWorld;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;

@@ -1,12 +1,12 @@
 package test.com.oramon.kata.utils;
 
-import com.oramon.kata.utils.GameOfLifeUtils;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.cell.enums.CELL_STATE;
+import com.oramon.kata.cell.util.CellUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import test.com.oramon.kata.GameOfLifeTest;
-
-import static org.junit.Assert.*;
+import test.com.oramon.kata.world.impl.matrixworld.base.MatrixWorldBaseTest;
 
 /**
  * ClassName
@@ -15,28 +15,39 @@ import static org.junit.Assert.*;
  * <p>
  * Date: 30/05/17 10:13
  */
-public class GameOfLifeUtilsTest {
+public class GameOfLifeUtilsTest extends MatrixWorldBaseTest {
 
-    @Test
-    public void cloneMatrix_WithAWorld_ShouldRetrunACloneWorld()
+    private  Cell[][] cellArray;
+
+    private Cell[][] createNewWorld()
     {
-        int[][] world = new int[][]
-                {
-                        new int[]{0,1,1,1},
-                        new int[]{1,2,1,1},
-                        new int[]{1,1,2,1},
-                        new int[]{0,1,0,1},
-                };
+        Cell firstCell = new Cell(ID_ONE, CELL_STATE.ALIVE);
+        Cell secondCell = new Cell(ID_TWO, CELL_STATE.DEATH);
+        Cell thirdCell = new Cell(ID_THREE, CELL_STATE.DEATH);
+        Cell fourthCell = new Cell(ID_FOUR, CELL_STATE.ALIVE);
+        Cell fifthCell = new Cell(ID_FIVE, CELL_STATE.ALIVE);
+        Cell sixthCell = new Cell(ID_SIX, CELL_STATE.ALIVE);
+        Cell seventh = new Cell(ID_SEVEN, CELL_STATE.ALIVE);
+        Cell eightCell = new Cell(ID_EIGHT, CELL_STATE.ALIVE);
+        Cell ninthCell = new Cell(ID_NINE, CELL_STATE.ALIVE);
 
-        int[][] result=GameOfLifeUtils.clone(world);
+        Cell[][] cellArrayResult = new Cell[][]{
+                new Cell[]{firstCell, secondCell, thirdCell},
+                new Cell[]{fourthCell, fifthCell, sixthCell},
+                new Cell[]{seventh, eightCell, ninthCell}};
 
-        int[][] expected = new int[][]
-                {
-                        new int[]{0,1,1,1},
-                        new int[]{1,2,1,1},
-                        new int[]{1,1,2,1},
-                        new int[]{0,1,0,1},
-                };
+        return cellArrayResult;
+    }
+    @Before
+    public void setup() {
+        cellArray =createNewWorld();
+    }
+    @Test
+    public void cloneMatrix_WithAWorld_ShouldReturnACloneWorld()
+    {
+        Cell[][] result = CellUtils.clone(cellArray);
+
+        Cell[][] expected = createNewWorld();
 
         Assert.assertEquals("Should return same world",expected,result);
     }
