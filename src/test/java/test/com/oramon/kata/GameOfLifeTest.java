@@ -57,6 +57,7 @@ public class GameOfLifeTest {
 
         assertEquals("It should be this world",expected,result);
     }
+
     @Test
     public void PrintWorldWithHyphensAndZeros()
     {

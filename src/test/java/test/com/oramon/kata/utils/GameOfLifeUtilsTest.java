@@ -42,6 +42,7 @@ public class GameOfLifeUtilsTest extends MatrixWorldBaseTest {
     public void setup() {
         cellArray =createNewWorld();
     }
+
     @Test
     public void cloneMatrix_WithAWorld_ShouldReturnACloneWorld()
     {

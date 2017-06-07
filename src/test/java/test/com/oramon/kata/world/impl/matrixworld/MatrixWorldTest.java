@@ -32,7 +32,7 @@ public class MatrixWorldTest {
     @Test
     public void getNeighbours_ForFirstCell_ShouldReturnTwoFiveFourCells() {
 
-     /*   Cell[][] cellWorld = getWorldOfThreeByThree();
+      /*Cell[][] cellWorld = getWorldOfThreeByThree();
         world = new MatrixWorld(cellWorld);
 
         List<Cell> neighboursOfACell = world.getNeighboursOfACell(new MatrixCoordinate(WIDTH_ZERO, HEIGHT_ZERO));
