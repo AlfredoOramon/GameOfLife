@@ -1,5 +1,7 @@
 package com.oramon.kata.livegeneration.interfaces;
 
+import com.oramon.kata.world.interfaces.World;
+
 /**
  * ClassName
  * <p>
@@ -9,5 +11,5 @@ package com.oramon.kata.livegeneration.interfaces;
  */
 public interface LiveEvolutionMatrixWorldStrategy
 {
-    int[][] createNextGenerationWorld(int[][] world);
+    World createNextGenerationWorld(World world);
 }

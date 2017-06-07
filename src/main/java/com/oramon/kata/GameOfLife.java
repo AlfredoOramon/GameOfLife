@@ -40,6 +40,6 @@ public class GameOfLife {
     }
 
     private void nextGenerationWorld(int[][] world) {
-        this.world = worldCycleOfLifeStrategy.createNextGenerationWorld(world);
+        //this.world = worldCycleOfLifeStrategy.createNextGenerationWorld(world);
     }
 }

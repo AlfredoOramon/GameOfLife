@@ -1,7 +1,9 @@
 package test.com.oramon.kata.livegeneration.interfaces;
 
-import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStategyImpl;
+import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStrategyImpl;
 
+import com.oramon.kata.world.impl.MatrixWorld;
+import com.oramon.kata.world.interfaces.World;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,17 +17,18 @@ import static org.junit.Assert.*;
  */
 public class LiveEvolutionMatrixWorldStrategyTest {
 
-    @Test
+   /* @Test
     public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldDie() {
-        int[][] world = new int[][]
+        int[][] matrix = new int[][]
                 {
                         new int[]{1, 0, 0, 0},
                         new int[]{1, 0, 1, 0},
                         new int[]{0, 0, 0, 0},
                         new int[]{1, 0, 1, 1},
                 };
+        World matrixWorld= new MatrixWorld(matrix);
 
-        int[] [] result= new LiveEvolutionMatrixWorldStategyImpl().createNextGenerationWorld(world);
+        int[] [] result= new LiveEvolutionMatrixWorldStrategyImpl().createNextGenerationWorld(matrixWorld);
         int[][] expected = new int[][]
                 {
                         new int[]{0, 0, 0, 0},
@@ -38,7 +41,7 @@ public class LiveEvolutionMatrixWorldStrategyTest {
 
     @Test
     public void nextGeneration_ACellWithFewerMoreThanTwoLiveNeighbours_ShouldLive() {
-        int[][] world = new int[][]
+        int[][] matrix = new int[][]
                 {
                         new int[]{1, 1, 0, 0},
                         new int[]{1, 0, 1, 0},
@@ -46,7 +49,9 @@ public class LiveEvolutionMatrixWorldStrategyTest {
                         new int[]{1, 0, 1, 1},
                 };
 
-        int[] [] result= new LiveEvolutionMatrixWorldStategyImpl().createNextGenerationWorld(world);
+        World matrixWorld= new MatrixWorld(matrix);
+
+        int[] [] result= new LiveEvolutionMatrixWorldStrategyImpl().createNextGenerationWorld(matrixWorld);
         int[][] expected = new int[][]
                 {
                         new int[]{1, 0, 0, 0},
@@ -55,6 +60,6 @@ public class LiveEvolutionMatrixWorldStrategyTest {
                         new int[]{0, 0, 0, 0},
                 };
         assertEquals("The next generation world should be", expected, result);
-    }
+    }*/
 
 }

@@ -2,7 +2,7 @@ package test.com.oramon.kata;
 
 import com.oramon.kata.GameOfLife;
 import com.oramon.kata.draw.impl.DrawStrategyImpl;
-import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStategyImpl;
+import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStrategyImpl;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class GameOfLifeTest {
     @Before
     public void setUp() {
         world=createInitialWorld();
-        liveEvolutionMatrixWorldStrategy=new LiveEvolutionMatrixWorldStategyImpl();
+        liveEvolutionMatrixWorldStrategy=new LiveEvolutionMatrixWorldStrategyImpl();
         SUT = new GameOfLife(world, new DrawStrategyImpl(VALUE_ALIVE_ONE, VALUE_DEATH_ZERO),liveEvolutionMatrixWorldStrategy);
     }
 
