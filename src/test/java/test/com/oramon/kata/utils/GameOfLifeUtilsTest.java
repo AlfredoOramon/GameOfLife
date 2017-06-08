@@ -8,6 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 import test.com.oramon.kata.world.impl.matrixworld.base.MatrixWorldBaseTest;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
+import static org.junit.Assert.assertTrue;
+
 /**
  * ClassName
  * <p>
@@ -52,4 +57,14 @@ public class GameOfLifeUtilsTest extends MatrixWorldBaseTest {
 
         Assert.assertEquals("Should return same world",expected,result);
     }
+
+    //TestCoverage
+    @Test
+    public void testConstructorIsPrivate() throws Exception {
+        Constructor constructor = CellUtils.class.getDeclaredConstructor();
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+        constructor.setAccessible(true);
+        constructor.newInstance();
+    }
+
 }

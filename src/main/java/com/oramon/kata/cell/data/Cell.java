@@ -11,32 +11,38 @@ import com.oramon.kata.cell.enums.CELL_STATE;
  */
 public class Cell {
     private int id;
-    private CELL_STATE cell_state;
+    private CELL_STATE cellState;
 
-    public Cell(int id,CELL_STATE cell_state) {
+    public Cell(int id,CELL_STATE cellState) {
         this.id=id;
-        this.cell_state = cell_state;
+        this.cellState = cellState;
     }
 
-    public CELL_STATE getCell_state() {
-        return cell_state;
+    public CELL_STATE getCellState() {
+        return cellState;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Cell cell = (Cell) o;
 
         if (id != cell.id) return false;
-        return cell_state == cell.cell_state;
+        {
+            return cellState == cell.cellState;
+        }
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + cell_state.hashCode();
+        result = 31 * result + cellState.hashCode();
         return result;
     }
 

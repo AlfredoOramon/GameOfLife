@@ -25,11 +25,12 @@ public class MatrixWorld implements World
     public MatrixWorld(Cell[][] world) {
         this.setMatrixWorld(world);
         this.setHeightWorld(world.length);
-        if (world.length > 1)
+        if (world.length > 1){
             this.setWidthWorld(world[0].length);
+        }
     }
 
-    public List<Cell> getNeighboursOfACell(MatrixCoordinate cellCoordinate) {
+    public final List<Cell> getNeighboursOfACell(MatrixCoordinate cellCoordinate) {
 
         int widthToStart = getWidthToStart(cellCoordinate);
         int widthToFinish = getWidthToFinish(cellCoordinate);
@@ -51,20 +52,20 @@ public class MatrixWorld implements World
         return neighbourCells;
     }
 
-    public Cell[][] getMatrixWorld()
+    public final Cell[][] getMatrixWorld()
     {
         return CellUtils.clone(matrixWorld);
     }
 
-    public int getWidthWorld() {
+    public final int getWidthWorld() {
         return widthWorld;
     }
 
-    public int getHeightWorld() {
+    public final int getHeightWorld() {
         return heightWorld;
     }
 
-    public Cell getCell(MatrixCoordinate matrixCoordinate) {
+    public final Cell getCell(MatrixCoordinate matrixCoordinate) {
         return matrixWorld[matrixCoordinate.getHeight()][matrixCoordinate.getWidth()];
     }
 

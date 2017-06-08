@@ -14,7 +14,7 @@ import com.oramon.kata.world.impl.MatrixWorld;
  */
 public class DrawMatrixWorldStrategyImpl implements DrawWorldStrategy
 {
-    DrawCellStrategy drawCellStrategy;
+    private DrawCellStrategy drawCellStrategy;
 
     public DrawMatrixWorldStrategyImpl(DrawCellStrategy strategy) {
         this.drawCellStrategy = strategy;

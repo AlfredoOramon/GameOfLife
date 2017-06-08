@@ -14,8 +14,8 @@ import com.oramon.kata.world.impl.MatrixWorld;
  */
 public class GameOfLife {
     private MatrixWorld world;
-    DrawMatrixWorldStrategyImpl drawWorldStrategy;
-    LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
+    private DrawMatrixWorldStrategyImpl drawWorldStrategy;
+    private LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
 
     public GameOfLife(MatrixWorld world, DrawCellStrategy strategy, LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
         this.world=world;

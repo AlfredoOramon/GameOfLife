@@ -7,7 +7,10 @@ package com.oramon.kata.constants;
  * <p>
  * Date: 30/05/17 9:50
  */
-public class GameOfLifeConstants {
+public final class GameOfLifeConstants {
+
+    private GameOfLifeConstants(){}
+
     public static final int CELL_ALIVE = 1;
     public static final int CELL_DEATH = 0;
 }

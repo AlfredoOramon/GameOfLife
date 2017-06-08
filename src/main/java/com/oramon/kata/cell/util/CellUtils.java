@@ -9,8 +9,10 @@ import com.oramon.kata.cell.data.Cell;
  * <p>
  * Date: 30/05/17 10:13
  */
-public class CellUtils
+public final class CellUtils
 {
+    private CellUtils(){}
+
     public static Cell[][] clone(Cell[][] matrix) {
         Cell[][] myCellArray = new Cell[matrix.length][];
         for (int i = 0; i < matrix.length; i++)

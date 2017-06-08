@@ -2,7 +2,6 @@ package com.oramon.kata.draw.impl;
 
 import com.oramon.kata.cell.data.Cell;
 import com.oramon.kata.cell.enums.CELL_STATE;
-import com.oramon.kata.constants.GameOfLifeConstants;
 import com.oramon.kata.draw.DrawCellStrategy;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -26,9 +25,9 @@ public class DrawCellStrategyImpl implements DrawCellStrategy {
 
     public String getSymbolToDraw(Cell value) {
         String result;
-        if (value.getCell_state() == CELL_STATE.ALIVE) {
+        if (value.getCellState() == CELL_STATE.ALIVE) {
             result = valueAlive;
-        } else if (value.getCell_state() == CELL_STATE.DEATH) {
+        } else if (value.getCellState() == CELL_STATE.DEATH) {
             result = valueDeath;
         } else {
             throw new NotImplementedException();
