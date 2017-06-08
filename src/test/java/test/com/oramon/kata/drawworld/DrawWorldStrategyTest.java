@@ -1,7 +1,11 @@
 package test.com.oramon.kata.drawworld;
 
-import com.oramon.kata.draw.impl.DrawWorldStrategyImpl;
-import com.oramon.kata.draw.DrawStrategy;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.cell.enums.CELL_STATE;
+import com.oramon.kata.draw.DrawWorldStrategy;
+import com.oramon.kata.draw.impl.DrawMatrixWorldStrategyImpl;
+import com.oramon.kata.draw.DrawCellStrategy;
+import com.oramon.kata.world.impl.MatrixWorld;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,62 +24,71 @@ import static org.mockito.Mockito.when;
  */
 public class DrawWorldStrategyTest {
 
-    private DrawWorldStrategyImpl SUT;
-    private DrawStrategy drawStrategy;
+    protected Cell firstCell=new Cell(ID_ONE, CELL_STATE.ALIVE);
+    protected Cell secondCell=new Cell(ID_TWO,CELL_STATE.DEATH);
+    protected Cell thirdCell= new Cell(ID_THREE,CELL_STATE.DEATH);
+    protected Cell fourthCell = new Cell(ID_FOUR, CELL_STATE.ALIVE);
+    protected Cell fifthCell = new Cell(ID_FIVE, CELL_STATE.ALIVE);
+    protected Cell sixthCell = new Cell(ID_SIX, CELL_STATE.ALIVE);
+    protected Cell seventh = new Cell(ID_SEVEN, CELL_STATE.ALIVE);
+    protected Cell eightCell = new Cell(ID_EIGHT, CELL_STATE.ALIVE);
+    protected Cell ninthCell = new Cell(ID_NINE, CELL_STATE.ALIVE);
+
+    protected static final int ID_ONE = 1;
+    protected static final int ID_TWO = 2;
+    protected static final int ID_THREE = 3;
+    protected static final int ID_FOUR = 4;
+    protected static final int ID_FIVE = 5;
+    protected static final int ID_SIX = 6;
+    protected static final int ID_SEVEN = 7;
+    protected static final int ID_EIGHT = 8;
+    protected static final int ID_NINE = 9;
+
+    protected Cell[][] getWorldOfThreeByThree() {
+        Cell[][] cellArray = new Cell[][]{
+                new Cell[]{firstCell, secondCell, thirdCell},
+                new Cell[]{fourthCell, fifthCell, sixthCell},
+                new Cell[]{seventh, eightCell, ninthCell}};
+        return cellArray;
+    }
+
+    private DrawWorldStrategy SUT;
+    private DrawCellStrategy drawStrategy;
 
     @Before
     public void setUp() {
-        drawStrategy=mock(DrawStrategy.class);
-        SUT = new DrawWorldStrategyImpl(drawStrategy);
-    }
-
-    private int[][] createInitialWorld() {
-        int[][] result = new int[3][3];
-        result[0][0] = 1;
-        result[0][1] = 2;
-        result[0][2] = 3;
-
-        result[1][0] = 4;
-        result[1][1] = 5;
-        result[1][2] = 6;
-
-        result[2][0] = 7;
-        result[2][1] = 8;
-        result[2][2] = 9;
-
-        return result;
+        drawStrategy=mock(DrawCellStrategy.class);
+        SUT = new DrawMatrixWorldStrategyImpl(drawStrategy);
     }
 
     @Test
-    public void printCellsOfTheWorld() {
+    public void printCellsOfAndArray() {
         String expected =
                 "123\n" +
                         "456\n" +
                         "789\n";
 
-        when(drawStrategy.getSymbolToDraw(1)).thenReturn("1");
-        when(drawStrategy.getSymbolToDraw(2)).thenReturn("2");
-        when(drawStrategy.getSymbolToDraw(3)).thenReturn("3");
-        when(drawStrategy.getSymbolToDraw(4)).thenReturn("4");
-        when(drawStrategy.getSymbolToDraw(5)).thenReturn("5");
-        when(drawStrategy.getSymbolToDraw(6)).thenReturn("6");
-        when(drawStrategy.getSymbolToDraw(7)).thenReturn("7");
-        when(drawStrategy.getSymbolToDraw(8)).thenReturn("8");
-        when(drawStrategy.getSymbolToDraw(9)).thenReturn("9");
+        when(drawStrategy.getSymbolToDraw(firstCell)).thenReturn("1");
+        when(drawStrategy.getSymbolToDraw(secondCell)).thenReturn("2");
+        when(drawStrategy.getSymbolToDraw(thirdCell)).thenReturn("3");
+        when(drawStrategy.getSymbolToDraw(fourthCell)).thenReturn("4");
+        when(drawStrategy.getSymbolToDraw(fifthCell)).thenReturn("5");
+        when(drawStrategy.getSymbolToDraw(sixthCell)).thenReturn("6");
+        when(drawStrategy.getSymbolToDraw(seventh)).thenReturn("7");
+        when(drawStrategy.getSymbolToDraw(eightCell)).thenReturn("8");
+        when(drawStrategy.getSymbolToDraw(ninthCell)).thenReturn("9");
 
-        String result =SUT.printWorld(createInitialWorld());
+        String result =SUT.printWorld(new MatrixWorld(getWorldOfThreeByThree()));
 
-
-        verify(drawStrategy,times(1)).getSymbolToDraw(1);
-        verify(drawStrategy,times(1)).getSymbolToDraw(2);
-        verify(drawStrategy,times(1)).getSymbolToDraw(3);
-        verify(drawStrategy,times(1)).getSymbolToDraw(4);
-        verify(drawStrategy,times(1)).getSymbolToDraw(5);
-        verify(drawStrategy,times(1)).getSymbolToDraw(6);
-        verify(drawStrategy,times(1)).getSymbolToDraw(7);
-        verify(drawStrategy,times(1)).getSymbolToDraw(8);
-        verify(drawStrategy,times(1)).getSymbolToDraw(9);
-
+        verify(drawStrategy,times(1)).getSymbolToDraw(firstCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(secondCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(thirdCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(fourthCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(fifthCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(sixthCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(seventh);
+        verify(drawStrategy,times(1)).getSymbolToDraw(eightCell);
+        verify(drawStrategy,times(1)).getSymbolToDraw(ninthCell);
 
         assertEquals("It should be this world", expected, result);
     }

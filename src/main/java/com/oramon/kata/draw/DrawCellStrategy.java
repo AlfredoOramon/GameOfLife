@@ -10,7 +10,5 @@ import com.oramon.kata.cell.data.Cell;
  * Date: 26/05/17 12:24
  */
 public interface DrawCellStrategy {
-    String getSymbolToDraw(int value);//TODO remove
-
     String getSymbolToDraw(Cell value);
 }

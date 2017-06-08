@@ -17,13 +17,13 @@ import java.util.List;
  */
 public class MatrixWorld implements World
 {
-    private Cell[][] world;
+    private Cell[][] matrixWorld;
     private int widthWorld=0;
     private int heightWorld=0;
 
 
     public MatrixWorld(Cell[][] world) {
-        this.setWorld(world);
+        this.setMatrixWorld(world);
         this.setHeightWorld(world.length);
         if (world.length > 1)
             this.setWidthWorld(world[0].length);
@@ -44,11 +44,28 @@ public class MatrixWorld implements World
             for (int loopWidth = widthToStart; loopWidth <= widthToFinish; loopWidth++) {
 
                 if (isNotTheCellItSelf(cellCoordinate, loopWidth, loopHeight)) {
-                    neighbourCells.add(world[loopHeight][loopWidth]);
+                    neighbourCells.add(matrixWorld[loopHeight][loopWidth]);
                 }
             }
         }
         return neighbourCells;
+    }
+
+    public Cell[][] getMatrixWorld()
+    {
+        return CellUtils.clone(matrixWorld);
+    }
+
+    public int getWidthWorld() {
+        return widthWorld;
+    }
+
+    public int getHeightWorld() {
+        return heightWorld;
+    }
+
+    public Cell getCell(MatrixCoordinate matrixCoordinate) {
+        return matrixWorld[matrixCoordinate.getHeight()][matrixCoordinate.getWidth()];
     }
 
     private int getHeightToFinish(MatrixCoordinate cellCoordinate) {
@@ -95,26 +112,8 @@ public class MatrixWorld implements World
         return !(width == cellCoordinate.getWidth() && height == cellCoordinate.getHeight());
     }
 
-    public MatrixWorld getMatrixWorld() {
-
-        Cell[][] newArrayCell= CellUtils.clone(world);
-        return new MatrixWorld(newArrayCell);
-    }
-
-    public int getWidthWorld() {
-        return widthWorld;
-    }
-
-    public int getHeightWorld() {
-        return heightWorld;
-    }
-
-    public Cell getCell(MatrixCoordinate matrixCoordinate) {
-        return world[matrixCoordinate.getHeight()][matrixCoordinate.getWidth()];
-    }
-
-    private void setWorld(Cell[][] world) {
-        this.world = world;
+    private void setMatrixWorld(Cell[][] matrixWorld) {
+        this.matrixWorld = matrixWorld;
     }
     private void setHeightWorld(int heightWorld) {
         this.heightWorld = heightWorld;

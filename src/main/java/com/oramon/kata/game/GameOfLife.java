@@ -1,8 +1,9 @@
 package com.oramon.kata.game;
 
-import com.oramon.kata.draw.impl.DrawWorldStrategyImpl;
-import com.oramon.kata.draw.DrawStrategy;
+import com.oramon.kata.draw.impl.DrawMatrixWorldStrategyImpl;
+import com.oramon.kata.draw.DrawCellStrategy;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
+import com.oramon.kata.world.impl.MatrixWorld;
 
 /**
  * ClassName
@@ -12,13 +13,13 @@ import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrateg
  * Date: 26/05/17 11:57
  */
 public class GameOfLife {
-    private int[][] world;
-    DrawWorldStrategyImpl drawWorldStrategy;
+    private MatrixWorld world;
+    DrawMatrixWorldStrategyImpl drawWorldStrategy;
     LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
 
-    public GameOfLife(int[][] world,DrawStrategy strategy,LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
+    public GameOfLife(MatrixWorld world, DrawCellStrategy strategy, LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
         this.world=world;
-        this.drawWorldStrategy=new DrawWorldStrategyImpl(strategy);
+        this.drawWorldStrategy=new DrawMatrixWorldStrategyImpl(strategy);
         this.worldCycleOfLifeStrategy=worldCycleOfLifeStrategy;
     }
 
@@ -31,11 +32,11 @@ public class GameOfLife {
         return printWorld(world);
     }
 
-    private String printWorld(int [][] world) {
+    private String printWorld(MatrixWorld world) {
         return drawWorldStrategy.printWorld(world);
     }
 
-    private void nextGenerationWorld(int[][] world) {
+    private void nextGenerationWorld(MatrixWorld world) {
         //this.world = worldCycleOfLifeStrategy.createNextGenerationWorld(world);
     }
 }

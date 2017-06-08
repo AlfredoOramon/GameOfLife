@@ -1,5 +1,8 @@
 package com.oramon.kata.draw;
 
+import com.oramon.kata.world.impl.MatrixWorld;
+import com.oramon.kata.world.interfaces.World;
+
 /**
  * ClassName
  * <p>
@@ -9,5 +12,5 @@ package com.oramon.kata.draw;
  */
 public interface DrawWorldStrategy {
 
-    public String printWorld(int[][] world);
+    public String printWorld(MatrixWorld world);
 }

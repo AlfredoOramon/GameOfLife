@@ -16,7 +16,7 @@ public enum CELL_STATE {
         this.cellState = cellState;
     }
 
-    public int getCellState() {
+    public int getState() {
         return cellState;
     }
 }
