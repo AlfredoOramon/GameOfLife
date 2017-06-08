@@ -1,7 +1,9 @@
 package test.com.oramon.kata.drawcell;
 
-import com.oramon.kata.draw.DrawStrategy;
-import com.oramon.kata.draw.impl.DrawStrategyImpl;
+import com.oramon.kata.cell.data.Cell;
+import com.oramon.kata.cell.enums.CELL_STATE;
+import com.oramon.kata.draw.DrawCellStrategy;
+import com.oramon.kata.draw.impl.DrawCellStrategyImpl;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Assert;
@@ -17,16 +19,22 @@ import org.junit.runner.RunWith;
  * Date: 26/05/17 15:06
  */
 @RunWith(JUnitParamsRunner.class)
-public class DrawStrategyTest {
+public class DrawCellStrategyTest {
 
     public static final String VALUE_ALIVE_ONE = "1";
     public static final String VALUE_DEATH_ZERO = "0";
     private static final String VALUE_DEATH_HYPHEN = "-";
     private static final String VALUE_ALIVE_STAR = "*";
-    public static final int ONE_NUMBER=1;
+
+    private static final int ID_ONE = 1;
+    private static final int ID_TWO = 2;
+
+    public static final Cell liveCell= new Cell(ID_ONE, CELL_STATE.ALIVE);
+    public static final Cell deathCell= new Cell(ID_TWO, CELL_STATE.ALIVE);
+
     private static final int ZERO_NUMBER = 0;
 
-    private DrawStrategy SUT;
+    private DrawCellStrategy SUT;
 
     @Before
     public void setup()
@@ -47,10 +55,10 @@ public class DrawStrategyTest {
     @Test
     @Parameters(method = "getAlivePosibilities")
     public void getSymbolToDraw_WithAliveOneParam_ShouldPrintSimbol(String symbolToDraw) {
-        SUT = new DrawStrategyImpl(symbolToDraw, VALUE_DEATH_ZERO);
-        String result=SUT.getSymbolToDraw(ONE_NUMBER);
+        SUT = new DrawCellStrategyImpl(symbolToDraw, VALUE_DEATH_ZERO);
+        String result=SUT.getSymbolToDraw(liveCell);
 
-        Assert.assertEquals("Should return"+ONE_NUMBER,symbolToDraw,result);
+        Assert.assertEquals("Should return"+symbolToDraw,symbolToDraw,result);
     }
 
     //In gogle drive there is a good book that explain this practical unit testing with junit and mockito
@@ -65,9 +73,10 @@ public class DrawStrategyTest {
     @Test
     @Parameters(method = "getDeathPosibilities")
     public void getSymbolToDraw_WithDeathParamInConstructor_ShouldPrintSimbol(String symbolToDraw) {
-        SUT = new DrawStrategyImpl(symbolToDraw, VALUE_DEATH_ZERO);
-        String result=SUT.getSymbolToDraw(ONE_NUMBER);
 
-        Assert.assertEquals("Should return"+ONE_NUMBER,symbolToDraw,result);
+        SUT = new DrawCellStrategyImpl(symbolToDraw, VALUE_DEATH_ZERO);
+        String result=SUT.getSymbolToDraw(deathCell);
+
+        Assert.assertEquals("Should return"+symbolToDraw,symbolToDraw,result);
     }
 }
