@@ -54,7 +54,6 @@ public class GetNeighboursMatrixWorldTest extends MatrixWorldBaseTest {
         SUT = new MatrixWorld(cellArray);
     }
 
-    //In gogle drive there is a good book that explain this practical unit testing with junit and mockito
     private static final Object[] getListOfNeighboursForCoordinates() {
 
         return new Object[]{

@@ -1,8 +1,12 @@
 package com.oramon.kata.livegeneration.impl;
 
+import com.oramon.kata.cell.data.Cell;
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
 import com.oramon.kata.world.impl.MatrixWorld;
 import com.oramon.kata.world.interfaces.World;
+
+import static com.oramon.kata.cell.enums.CELL_STATE.ALIVE;
+import static com.oramon.kata.cell.enums.CELL_STATE.DEATH;
 
 /**
  * ClassName
@@ -13,19 +17,16 @@ import com.oramon.kata.world.interfaces.World;
  */
 public class LiveEvolutionMatrixWorldStrategyImpl implements LiveEvolutionMatrixWorldStrategy
 {
-    public World createNextGenerationWorld(World world)
+    public MatrixWorld createNextGenerationWorld(MatrixWorld world)
     {
-//        int heightWorld = world.length;
-//        int widthWorld = world.length;
 //
-//        int[][] newWorld = new int[heightWorld][widthWorld];
-//
-//        for (int heightCell = 0; heightCell < heightWorld; heightCell++) {
-//            for (int widthCell = 0; widthCell < widthWorld; widthCell++) {
-//                newWorld[heightCell][widthCell] = nextGenerationCell(world, heightWorld, widthWorld, heightCell, widthCell);
-//            }
-//        }
-//        return newWorld;
+        Cell[][] newArrayCell = new Cell[][]{
+                new Cell[]{new Cell(1, ALIVE), new Cell(2, DEATH), new Cell(3, DEATH)},
+                new Cell[]{new Cell(4, DEATH), new Cell(5, DEATH), new Cell(6, DEATH)},
+                new Cell[]{new Cell(7, DEATH), new Cell(8, DEATH), new Cell(9, DEATH)}};
+
+        MatrixWorld newMatrixWorld = new MatrixWorld(newArrayCell);
+
         MatrixWorld matrixWorld = new MatrixWorld(null);
         return matrixWorld;
     }

@@ -21,7 +21,6 @@ public class MatrixCoordinateTest {
 
     private MatrixCoordinate SUT;
 
-    //In gogle drive there is a good book that explain this practical unit testing with junit and mockito
     private static final Object[] getNumbers() {
         return new Object[]{
                 new Object[]{1},
