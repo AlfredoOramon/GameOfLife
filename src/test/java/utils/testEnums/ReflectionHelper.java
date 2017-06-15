@@ -1,4 +1,4 @@
-package utils;
+package utils.testEnums;
 
 import sun.reflect.*;
 import java.lang.reflect.*;

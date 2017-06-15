@@ -10,10 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import sun.reflect.ReflectionFactory;
-import utils.EnumBuster;
-
-import java.lang.reflect.Constructor;
+import utils.testEnums.EnumBuster;
 
 /**
  * ClassName
