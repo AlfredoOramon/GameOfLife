@@ -56,6 +56,11 @@ public class GameOfLifeUtilsTest extends MatrixWorldBaseTest {
         Cell[][] expected = createNewWorld();
 
         Assert.assertEquals("Should return same world",expected,result);
+
+        Cell cell = expected[0][0];
+        cell.setId(1090);
+
+        Assert.assertNotEquals("Now the world is different",expected,result);
     }
 
     //TestCoverage

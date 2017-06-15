@@ -9,14 +9,27 @@ import com.oramon.kata.cell.data.Cell;
  * <p>
  * Date: 30/05/17 10:13
  */
-public final class CellUtils
-{
-    private CellUtils(){}
+public final class CellUtils {
+    private CellUtils() {
+    }
 
     public static Cell[][] clone(Cell[][] matrix) {
-        Cell[][] myCellArray = new Cell[matrix.length][];
-        for (int i = 0; i < matrix.length; i++)
-            myCellArray[i] = matrix[i].clone();
-        return myCellArray;
+
+        Cell[][] myNewCellArray = new Cell[matrix.length][];
+
+        for (int height = 0; height < matrix.length; height++) {
+            myNewCellArray[height] = cloneRow(matrix[height]);
+        }
+        return myNewCellArray;
+    }
+
+    private static Cell[] cloneRow(Cell[] cells) {
+        Cell[] newCells = new Cell[cells.length];
+
+        for (int width = 0; width < cells.length; width++) {
+            Cell newCell = cells[width].clone();
+            newCells[width] = newCell;
+        }
+        return newCells;
     }
 }

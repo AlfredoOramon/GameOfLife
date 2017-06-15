@@ -41,20 +41,42 @@ public class ACellWithTwoNeighboursLiveTest extends GameOfLifeBaseTest {
     }
 
     @Test
+    @SuppressWarnings("Duplicates")
     public void nextGeneration_ACellWithTwoOrMoreCellsThanTwoLiveNeighbours_ShouldLive() {
         Cell[][] arrayCell = new Cell[][]{
-                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, DEATH)},
-                new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
-                new Cell[]{new Cell(ID_SEVEN, DEATH), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, DEATH)}};
+                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, DEATH), new Cell(ID_THREE, ALIVE)},
+                new Cell[]{new Cell(ID_FOUR, DEATH), new Cell(ID_FIVE, ALIVE), new Cell(ID_SIX, ALIVE)},
+                new Cell[]{new Cell(ID_SEVEN, ALIVE), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, ALIVE)}};
 
         world = new MatrixWorld(arrayCell);
 
-        SUT = new GameOfLife(world,drawWorldStrategy,liveEvolutionMatrixWorldStrategy);
+        SUT = new GameOfLife(world, drawWorldStrategy, liveEvolutionMatrixWorldStrategy);
         String result = SUT.nextGenerationWorld();
 
         String expected =
-                "100\n" +
-                        "000\n" +
+                "001\n" +
+                        "011\n" +
+                        "001\n";
+
+        assertEquals("The next generation world should be", expected, result);
+    }
+
+    @Test
+    @SuppressWarnings("Duplicates")
+    public void nextGeneration_ACellWithTwoOrMoreCellsThanTwoLiveNeighbours_ShouldLive2() {
+        Cell[][] arrayCell = new Cell[][]{
+                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, DEATH), new Cell(ID_THREE, ALIVE)},
+                new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, ALIVE)},
+                new Cell[]{new Cell(ID_SEVEN, ALIVE), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, ALIVE)}};
+
+        world = new MatrixWorld(arrayCell);
+
+        SUT = new GameOfLife(world, drawWorldStrategy, liveEvolutionMatrixWorldStrategy);
+        String result = SUT.nextGenerationWorld();
+
+        String expected =
+                "000\n" +
+                        "101\n" +
                         "000\n";
 
         assertEquals("The next generation world should be", expected, result);

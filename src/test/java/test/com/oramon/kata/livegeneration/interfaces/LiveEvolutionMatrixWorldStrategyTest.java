@@ -1,18 +1,17 @@
 package test.com.oramon.kata.livegeneration.interfaces;
 
 import com.oramon.kata.cell.data.Cell;
-import com.oramon.kata.cell.enums.CELL_STATE;
 import com.oramon.kata.livegeneration.impl.LiveEvolutionMatrixWorldStrategyImpl;
 
 import com.oramon.kata.livegeneration.interfaces.LiveEvolutionMatrixWorldStrategy;
 import com.oramon.kata.world.impl.MatrixWorld;
-import com.oramon.kata.world.interfaces.World;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static com.oramon.kata.cell.enums.CELL_STATE.ALIVE;
 import static com.oramon.kata.cell.enums.CELL_STATE.DEATH;
-import static org.junit.Assert.*;
+
 
 /**
  * ClassName
@@ -35,9 +34,9 @@ public class LiveEvolutionMatrixWorldStrategyTest {
 
     LiveEvolutionMatrixWorldStrategy SUT;
 
+    @Before
     public void setup()
     {
-
         SUT = new LiveEvolutionMatrixWorldStrategyImpl();
     }
 
@@ -46,18 +45,16 @@ public class LiveEvolutionMatrixWorldStrategyTest {
         Cell[][] arrayCell = new Cell[][]{
                 new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, DEATH)},
                 new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
-                new Cell[]{new Cell(ID_SEVEN, DEATH), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, DEATH)}};
+                new Cell[]{new Cell(ID_SEVEN, DEATH), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, ALIVE)}};
 
         MatrixWorld world = new MatrixWorld(arrayCell);
         MatrixWorld result = SUT.createNextGenerationWorld(world);
 
         Cell[][] newArrayCell = new Cell[][]{
-                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, DEATH), new Cell(ID_THREE, DEATH)},
-                new Cell[]{new Cell(ID_FOUR, DEATH), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
+                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, DEATH)},
+                new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
                 new Cell[]{new Cell(ID_SEVEN, DEATH), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, DEATH)}};
 
-        MatrixWorld newMatrixWorld = new MatrixWorld(newArrayCell);
-
-        Assert.assertEquals("All World Should be death", newMatrixWorld, result);
+        Assert.assertEquals("The arrayOfCells doesnt match", newArrayCell, result.getMatrixWorld());
     }
 }

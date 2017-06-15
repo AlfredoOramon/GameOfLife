@@ -9,13 +9,13 @@ import com.oramon.kata.cell.enums.CELL_STATE;
  * <p>
  * Date: 5/06/17 10:20
  */
-public class Cell {
+public class Cell implements Cloneable {
     private int id;
     private CELL_STATE cellState;
 
-    public Cell(int id,CELL_STATE cellState) {
-        this.id=id;
-        this.cellState = cellState;
+    public Cell(int id, CELL_STATE cellState) {
+        this.setId(id);
+        this.setCellState(cellState);
     }
 
     public CELL_STATE getCellState() {
@@ -27,26 +27,37 @@ public class Cell {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
 
         Cell cell = (Cell) o;
 
-        if (id != cell.id) return false;
+        if (getId() != cell.getId()) return false;
         {
-            return cellState == cell.cellState;
+            return getCellState() == cell.getCellState();
         }
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + cellState.hashCode();
+        int result = getId();
+        result = 31 * result + getCellState().hashCode();
         return result;
+    }
+
+
+    public Cell clone() {
+
+        return new Cell(this.getId(), this.getCellState());
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCellState(CELL_STATE cellState) {
+        this.cellState = cellState;
     }
 }

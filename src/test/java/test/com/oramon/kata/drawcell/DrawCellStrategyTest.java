@@ -10,6 +10,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import sun.reflect.ReflectionFactory;
+import utils.EnumBuster;
+
+import java.lang.reflect.Constructor;
 
 /**
  * ClassName
@@ -78,5 +82,18 @@ public class DrawCellStrategyTest {
         String result=SUT.getSymbolToDraw(deathCell);
 
         Assert.assertEquals("Should return"+symbolToDraw,symbolToDraw,result);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void test()
+    {
+        EnumBuster<CELL_STATE> buster= new EnumBuster<CELL_STATE>(CELL_STATE.class);
+
+        CELL_STATE NOT_EXISTING = buster.make("NOT_EXISTING");
+
+        Cell cell=new Cell(ID_ONE,NOT_EXISTING);
+
+        SUT = new DrawCellStrategyImpl(VALUE_DEATH_ZERO, VALUE_DEATH_ZERO);
+        String result=SUT.getSymbolToDraw(cell);
     }
 }

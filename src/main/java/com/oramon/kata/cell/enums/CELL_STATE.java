@@ -8,15 +8,5 @@ package com.oramon.kata.cell.enums;
  * Date: 5/06/17 10:27
  */
 public enum CELL_STATE {
-    ALIVE(1), DEATH(0);
-
-    private final int cellState;
-
-    CELL_STATE(final int cellState) {
-        this.cellState = cellState;
-    }
-
-    public int getState() {
-        return cellState;
-    }
+    ALIVE, DEATH
 }

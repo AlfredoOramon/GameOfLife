@@ -14,7 +14,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class DrawCellStrategyImpl implements DrawCellStrategy {
 
-    private final String valueAlive;
+    final String valueAlive;
     private final String valueDeath;
 
     public DrawCellStrategyImpl(String valueAlive, String valueDeath)
@@ -30,7 +30,7 @@ public class DrawCellStrategyImpl implements DrawCellStrategy {
         } else if (value.getCellState() == CELL_STATE.DEATH) {
             result = valueDeath;
         } else {
-            throw new NotImplementedException();
+            throw new IllegalStateException();
         }
         return result;
     }
