@@ -27,7 +27,7 @@ public final class CellUtils {
         Cell[] newCells = new Cell[cells.length];
 
         for (int width = 0; width < cells.length; width++) {
-            Cell newCell = cells[width].clone();
+            Cell newCell = cells[width].cloneIt();
             newCells[width] = newCell;
         }
         return newCells;

@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 public class CellTest {
 
     private static final int ID_ONE = 1;
+    public static final String EQUALS_SHOULD_RETURN_FALSE = "Equals should return false";
 
     private static final Object[] getIds() {
 
@@ -76,9 +77,19 @@ public class CellTest {
 
     @Test
     @Parameters(method = "getIdsPlusCellState")
-    public void cloneShouldReturnANewObject(int idCell, CELL_STATE cell_state) {
+    public void testEquals_OtherClass_ShouldReturnFalse(int idCell, CELL_STATE cell_state) {
+        Cell x = new Cell(idCell, cell_state);  // equals and hashCode check name field value
+        Object y = new Object();
+        Assert.assertNotEquals("Equals should return false", x.equals(y) && y.equals(x));
+        Assert.assertNotEquals("Equals should return false", x.hashCode() == y.hashCode());
+    }
+
+
+    @Test
+    @Parameters(method = "getIdsPlusCellState")
+    public void cloneShouldReturnANewObject(int idCell, CELL_STATE cell_state) throws CloneNotSupportedException {
         Cell oldCell = new Cell(idCell, cell_state);  // equals and hashCode check name field value
-        Cell clonedCell = oldCell.clone();
+        Cell clonedCell = oldCell.cloneIt();
 
         oldCell.setId(ID_ONE);
         oldCell.setCellState(CELL_STATE.DEATH);

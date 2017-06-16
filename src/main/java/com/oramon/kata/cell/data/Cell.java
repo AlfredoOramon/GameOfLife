@@ -9,55 +9,60 @@ import com.oramon.kata.cell.enums.CELL_STATE;
  * <p>
  * Date: 5/06/17 10:20
  */
-public class Cell implements Cloneable {
+public class Cell {
+    public static final int HASH_INT = 31;
     private int id;
     private CELL_STATE cellState;
 
-    public Cell(int id, CELL_STATE cellState) {
-        this.setId(id);
-        this.setCellState(cellState);
+    public Cell(int pId, CELL_STATE pCellState) {
+        setId(pId);
+        setCellState(pCellState);
     }
 
-    public CELL_STATE getCellState() {
+    public final CELL_STATE getCellState() {
         return cellState;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+
         if (this == o) {
             return true;
         }
 
         Cell cell = (Cell) o;
 
-        if (getId() != cell.getId()) return false;
-        {
-            return getCellState() == cell.getCellState();
+        if (getId() != cell.getId()) {
+            return false;
         }
+
+        return getCellState() == cell.getCellState();
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = getId();
-        result = 31 * result + getCellState().hashCode();
+        result = HASH_INT * result + getCellState().hashCode();
         return result;
     }
 
 
-    public Cell clone() {
-
+    public final Cell cloneIt() {
         return new Cell(this.getId(), this.getCellState());
     }
 
-    public int getId() {
+    public final int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public final void setId(int pId) {
+        id = pId;
     }
 
-    public void setCellState(CELL_STATE cellState) {
-        this.cellState = cellState;
+    public final void setCellState(CELL_STATE pCellState) {
+        cellState = pCellState;
     }
 }
