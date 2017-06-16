@@ -14,9 +14,10 @@ public class Cell {
     private int id;
     private CELL_STATE cellState;
 
-    public Cell(int pId, CELL_STATE pCellState) {
-        setId(pId);
-        setCellState(pCellState);
+
+    public Cell(int idOfTheCell, CELL_STATE cellStateOfTheCell) {
+        setId(idOfTheCell);
+        setCellState(cellStateOfTheCell);
     }
 
     public final CELL_STATE getCellState() {
@@ -58,11 +59,11 @@ public class Cell {
         return id;
     }
 
-    public final void setId(int pId) {
-        id = pId;
+    public final void setId(int idOfTheCell) {
+        id = idOfTheCell;
     }
 
-    public final void setCellState(CELL_STATE pCellState) {
-        cellState = pCellState;
+    public final void setCellState(CELL_STATE cellStateOfTheCell) {
+        cellState = cellStateOfTheCell;
     }
 }
