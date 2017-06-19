@@ -1,0 +1,24 @@
+image: maven:3.5.0-jdk-8
+
+build_Unit_Tests:
+  script: "mvn '-Dtest=junit.*Test' package -B"
+build_Cucumber_Tests:
+  script: "mvn test -B"
+sonarqube_preview:
+  script:
+    - git config --global user.email "alfredo.gil@oramon.nl"
+    - git config --global user.name "alfredo"
+    - git checkout origin/master
+    - git merge $CI_BUILD_REF --no-commit --no-ff
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME
+  stage: test
+  except:
+    - develop
+    - /^hotfix_.*$/
+    - /.*-hotfix$/
+
+final-result:
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL
+  only:
+    - master
