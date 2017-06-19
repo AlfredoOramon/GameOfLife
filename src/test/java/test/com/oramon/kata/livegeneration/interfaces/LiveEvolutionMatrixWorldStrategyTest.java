@@ -41,6 +41,7 @@ public class LiveEvolutionMatrixWorldStrategyTest {
     }
 
     @Test
+    @SuppressWarnings("Duplicates")
     public void getNextGenerationWorld_ACellWithFewerThanTwoLiveNeighbours_ShouldDie() {
         Cell[][] arrayCell = new Cell[][]{
                 new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, DEATH)},
@@ -54,6 +55,25 @@ public class LiveEvolutionMatrixWorldStrategyTest {
                 new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, DEATH)},
                 new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
                 new Cell[]{new Cell(ID_SEVEN, DEATH), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, DEATH)}};
+
+        Assert.assertEquals("The arrayOfCells doesnt match", newArrayCell, result.getMatrixWorld());
+    }
+
+    @Test
+    @SuppressWarnings("Duplicates")
+    public void getNextGenerationWorld_ACellWithMoreThanThreeCells_ShouldDie() {
+        Cell[][] arrayCell = new Cell[][]{
+                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, ALIVE), new Cell(ID_THREE, ALIVE)},
+                new Cell[]{new Cell(ID_FOUR, ALIVE), new Cell(ID_FIVE, ALIVE), new Cell(ID_SIX, ALIVE)},
+                new Cell[]{new Cell(ID_SEVEN, ALIVE), new Cell(ID_EIGHT, ALIVE), new Cell(ID_NINE, ALIVE)}};
+
+        MatrixWorld world = new MatrixWorld(arrayCell);
+        MatrixWorld result = SUT.createNextGenerationWorld(world);
+
+        Cell[][] newArrayCell = new Cell[][]{
+                new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, DEATH), new Cell(ID_THREE, ALIVE)},
+                new Cell[]{new Cell(ID_FOUR, DEATH), new Cell(ID_FIVE, DEATH), new Cell(ID_SIX, DEATH)},
+                new Cell[]{new Cell(ID_SEVEN, ALIVE), new Cell(ID_EIGHT, DEATH), new Cell(ID_NINE, ALIVE)}};
 
         Assert.assertEquals("The arrayOfCells doesnt match", newArrayCell, result.getMatrixWorld());
     }

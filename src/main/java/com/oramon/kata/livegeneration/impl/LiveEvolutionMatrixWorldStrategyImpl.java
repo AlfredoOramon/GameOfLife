@@ -20,16 +20,19 @@ import static com.oramon.kata.cell.enums.CELL_STATE.DEATH;
  * <p>
  * Date: 30/05/17 11:22
  */
-public class LiveEvolutionMatrixWorldStrategyImpl implements LiveEvolutionMatrixWorldStrategy
-{
+public class LiveEvolutionMatrixWorldStrategyImpl implements LiveEvolutionMatrixWorldStrategy {
+
     public MatrixWorld createNextGenerationWorld(MatrixWorld world) {
+
         Cell[][] cellMatrixWorld = world.getMatrixWorld();
         Cell[][] newMatrixArrayCell = world.getMatrixWorld();
 
         for (int rowCellMatrix = 0; rowCellMatrix < cellMatrixWorld.length; rowCellMatrix++) {
             for (int columnWorld = 0; columnWorld < cellMatrixWorld[rowCellMatrix].length; columnWorld++) {
                 MatrixCoordinate coordinate = new MatrixCoordinate(columnWorld, rowCellMatrix);
+
                 List<Cell> cellsNeighbours = world.getNeighboursOfACell(coordinate);
+
                 newMatrixArrayCell[rowCellMatrix][columnWorld] = getNewCell(world.getCell(coordinate), cellsNeighbours);
             }
         }
@@ -44,11 +47,15 @@ public class LiveEvolutionMatrixWorldStrategyImpl implements LiveEvolutionMatrix
 
         if (cell.getCellState().equals(ALIVE)) {
             cell_state = CELL_STATE.ALIVE;
+
             long number = cellsNeighbours
                     .stream()
                     .filter(cellInList -> cellInList.getCellState().equals(CELL_STATE.ALIVE))
                     .count();
+
             if (number < 2) {
+                cell_state = CELL_STATE.DEATH;
+            } else if (number > 3) {
                 cell_state = CELL_STATE.DEATH;
             }
         } else if (cell.getCellState().equals(DEATH)) {

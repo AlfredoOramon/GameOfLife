@@ -20,6 +20,7 @@ import static com.oramon.kata.cell.enums.CELL_STATE.DEATH;
 public class ACellWithTwoNeighboursLiveTest extends GameOfLifeBaseTest {
 
     @Test
+    @SuppressWarnings("Duplicates")
     public void nextGeneration_ACellWithFewerThanTwoLiveNeighbours_ShouldDie() {
         Cell[][] arrayCell = new Cell[][]{
                 new Cell[]{new Cell(ID_ONE, ALIVE), new Cell(ID_TWO, DEATH), new Cell(ID_THREE, DEATH)},

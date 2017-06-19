@@ -27,7 +27,7 @@ public class MatrixWorld implements World
         matrixWorld = creationWorld;
         heightWorld = creationWorld.length;
         if (creationWorld.length > 1) {
-            heightWorld = creationWorld[0].length;
+            widthWorld = creationWorld[0].length;
         }
     }
 
