@@ -3,6 +3,7 @@ package test.integration.game;
 import com.oramon.kata.cell.data.Cell;
 import com.oramon.kata.game.GameOfLife;
 import com.oramon.kata.world.impl.MatrixWorld;
+import org.junit.Ignore;
 import org.junit.Test;
 import test.integration.game.base.GameOfLifeBaseTest;
 
@@ -41,7 +42,7 @@ public class ACellWithTwoNeighboursLiveTest extends GameOfLifeBaseTest {
         assertEquals("The next generation world should be", expected, result);
     }
 
-    @Test
+    @Ignore
     @SuppressWarnings("Duplicates")
     public void nextGeneration_ACellWithTwoOrMoreCellsThanTwoLiveNeighbours_ShouldLive() {
         Cell[][] arrayCell = new Cell[][]{
