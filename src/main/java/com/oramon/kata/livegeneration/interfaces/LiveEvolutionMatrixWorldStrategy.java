@@ -1,7 +1,6 @@
 package com.oramon.kata.livegeneration.interfaces;
 
 import com.oramon.kata.world.impl.MatrixWorld;
-import com.oramon.kata.world.interfaces.World;
 
 /**
  * ClassName

@@ -20,7 +20,7 @@ public class DrawMatrixWorldStrategyImpl implements DrawWorldStrategy
         this.drawCellStrategy = strategy;
     }
 
-    public String printWorld(MatrixWorld matrixWorld) {
+    public final String printWorld(MatrixWorld matrixWorld) {
 
         Cell[][] arrayCells = matrixWorld.getMatrixWorld();
 

@@ -11,16 +11,16 @@ public class MatrixCoordinate {
     private int width;
     private int height;
 
-    public MatrixCoordinate(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public MatrixCoordinate(int widthCoordinate, int heightCoordinate) {
+        width = widthCoordinate;
+        height = heightCoordinate;
     }
 
-    public int getHeight() {
+    public final int getHeight() {
         return height;
     }
 
-    public int getWidth() {
+    public final int getWidth() {
         return width;
     }
 }

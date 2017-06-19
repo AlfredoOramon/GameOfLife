@@ -3,7 +3,6 @@ package com.oramon.kata.draw.impl;
 import com.oramon.kata.cell.data.Cell;
 import com.oramon.kata.cell.enums.CELL_STATE;
 import com.oramon.kata.draw.DrawCellStrategy;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * ClassName
@@ -14,16 +13,16 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class DrawCellStrategyImpl implements DrawCellStrategy {
 
-    final String valueAlive;
+    private final String valueAlive;
     private final String valueDeath;
 
-    public DrawCellStrategyImpl(String valueAlive, String valueDeath)
+    public DrawCellStrategyImpl(String valueOfTheCellAlive, String valueOfTheCellDeath)
     {
-        this.valueAlive=valueAlive;
-        this.valueDeath=valueDeath;
+        valueAlive=valueOfTheCellAlive;
+        valueDeath=valueOfTheCellDeath;
     }
 
-    public String getSymbolToDraw(Cell value) {
+    public final String getSymbolToDraw(Cell value) {
         String result;
         if (value.getCellState() == CELL_STATE.ALIVE) {
             result = valueAlive;

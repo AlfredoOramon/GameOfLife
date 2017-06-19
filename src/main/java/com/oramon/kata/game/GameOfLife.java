@@ -16,22 +16,22 @@ public class GameOfLife {
     private DrawWorldStrategy drawWorldStrategy;
     private LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy;
 
-    public GameOfLife(MatrixWorld world, DrawWorldStrategy drawWorldStrategy, LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategy) {
-        this.world=world;
-        this.drawWorldStrategy=drawWorldStrategy;
-        this.worldCycleOfLifeStrategy=worldCycleOfLifeStrategy;
+    public GameOfLife(MatrixWorld matrixWorld, DrawWorldStrategy drawWorldStrategyImpl, LiveEvolutionMatrixWorldStrategy worldCycleOfLifeStrategyImpl) {
+        world = matrixWorld;
+        drawWorldStrategy = drawWorldStrategyImpl;
+        worldCycleOfLifeStrategy = worldCycleOfLifeStrategyImpl;
     }
 
-    public String printWorld() {
+    public final String printWorld() {
         return printWorld(world);
     }
 
-    public String nextGenerationWorld() {
+    public final String nextGenerationWorld() {
         world = worldCycleOfLifeStrategy.createNextGenerationWorld(world);
         return printWorld(world);
     }
 
-    private String printWorld(MatrixWorld world) {
-        return drawWorldStrategy.printWorld(world);
+    private String printWorld(MatrixWorld matrixWorld) {
+        return drawWorldStrategy.printWorld(matrixWorld);
     }
 }

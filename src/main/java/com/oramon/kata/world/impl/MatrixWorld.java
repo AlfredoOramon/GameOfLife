@@ -23,10 +23,11 @@ public class MatrixWorld implements World
 
 
     public MatrixWorld(Cell[][] world) {
-        this.setMatrixWorld(world);
-        this.setHeightWorld(world.length);
-        if (world.length > 1){
-            this.setWidthWorld(world[0].length);
+        Cell[][] creationWorld=CellUtils.clone(world);
+        matrixWorld = creationWorld;
+        heightWorld = creationWorld.length;
+        if (creationWorld.length > 1) {
+            heightWorld = creationWorld[0].length;
         }
     }
 
@@ -113,13 +114,13 @@ public class MatrixWorld implements World
         return !(width == cellCoordinate.getWidth() && height == cellCoordinate.getHeight());
     }
 
-    private void setMatrixWorld(Cell[][] matrixWorld) {
-        this.matrixWorld = matrixWorld;
+/*    private void setMatrixWorld(Cell[][] matrixWorldArray) {
+        matrixWorld = matrixWorldArray;
     }
-    private void setHeightWorld(int heightWorld) {
-        this.heightWorld = heightWorld;
+    private void setHeightWorld(int heightOfTheWorld) {
+        heightWorld = heightOfTheWorld;
     }
-    private void setWidthWorld(int widthWorld) {
-        this.widthWorld = widthWorld;
-    }
+    private void setWidthWorld(int widthOfTheWorld) {
+        this.widthWorld = widthOfTheWorld;
+    }*/
 }
