@@ -1,9 +1,13 @@
 image: maven:3.5.0-jdk-8
 
+cache:
+  paths:
+    - .m2/
+
 build_Unit_Tests:
-  script: "mvn '-Dtest=junit.*Test' package -B"
-build_Cucumber_Tests:
+  #script: "mvn '-Dtest=junit.*Test' package -B"
   script: "mvn test -B"
+
 sonarqube_preview:
   script:
     - git config --global user.email "alfredo.gil@oramon.nl"
